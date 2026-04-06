@@ -1,23 +1,36 @@
 import numpy as np
 
-# Create a NumPy array
-arr = np.array([10, 20, 30, 40, 50])
+# Create 3x3 array (3 subjects × 3 students)
+marks = np.array([[10, 20, 30],
+                  [15, 25, 35],
+                  [20, 30, 40]])
 
-# Slice elements (index 1 to 3)
-slice_arr = arr[1:4]
+print("Original 3x3 Array:")
+print(marks)
 
-# Broadcasting operation (add 5 to every element)
-broadcast = arr + 5
+# Test Case 1: Reshape to (1, 9)
+reshaped_marks = marks.reshape(1, 9)
 
-# Compare with Python list multiplication
-py_list = [10, 20, 30, 40, 50]
-list_result = [x * 2 for x in py_list]
+print("\nReshaped Array (1x9):")
+print(reshaped_marks)
 
-# NumPy vectorized multiplication
-numpy_result = arr * 2
+# Test Case 2: Element-wise multiplication
+arr1 = np.array([1, 2, 3])
+arr2 = np.array([4, 5, 6])
 
-print("Original array:", arr)
-print("Sliced array:", slice_arr)
-print("Broadcast result:", broadcast)
-print("Python list multiplication:", list_result)
-print("NumPy multiplication:", numpy_result)
+result = arr1 * arr2
+
+print("\nElement-wise Multiplication:")
+print(result)
+
+# Bonus: Double marks using broadcasting
+bonus_marks = marks * 2
+
+print("\nBonus Marks (Doubled):")
+print(bonus_marks)
+
+# Total marks per student (column-wise sum)
+total_marks = np.sum(marks, axis=0)
+
+print("\nTotal Marks of Each Student:")
+print(total_marks)
